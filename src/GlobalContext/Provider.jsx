@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import StoreData from "./data";
+import axios from "axios";
+
 
 export const GlobalContext = createContext();
 
@@ -11,26 +13,45 @@ export default function GlobalProvider({ children }) {
   );
 
   const [cart, setCart, clearCart] = useLocalStorage("cart", []);
-  //const [cart, setCart] = useLocalStorage("shopping-cart",[]);
-  const [itemInCart, setItemInCart] = useState({});
   const [singleProduct, setSingleProduct] = useState({});
-
-  useEffect(() => {
-    //manageCart();
-  }, [cart, products]);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const addToCart = (item) => {
     manageCart(item);
+    console.log(cart);
   };
 
-  console.log(products);
+  useEffect(() => {
+    //manageCart();
+  }, [cart, products, addToCart]);
 
+  //console.log(products);
+
+  // const manageCart = (item) => {
+  //   if (item.inStock) {
+  //     item.inStock = false;
+  //     const newItem = { ...item, quantity: 1, totalPrice: item.price };
+  //     setCart([newItem, ...cart]);
+  //     setProducts((prevState) => [...prevState, item]);
+  //     //console.log(products);
+  //   }
+  // };
   const manageCart = (item) => {
     if (item.inStock) {
       item.inStock = false;
-      setCart([item, ...cart]);
-      setProducts((prevState) => [...prevState, item]);
-      //console.log(products);
+      const newItem = { ...item, quantity: 1, totalPrice: item.price };
+      setCart([newItem, ...cart]);
+      setProducts((prevState) => {
+        const index = prevState.findIndex((i) => i.id === item.id);
+        if (index === -1) {
+          return prevState; // item not found, return previous state
+        } else {
+          const updatedProducts = [...prevState];
+          updatedProducts[index] = item;
+          console.log(updatedProducts);
+          return updatedProducts;
+        }
+      });
     }
   };
 
@@ -40,54 +61,129 @@ export default function GlobalProvider({ children }) {
     );
     setSingleProduct(product);
   };
-const cartQuantity =()=>{
 
-}
-  const increaseCartQuantity = (id) => {
+  const cartQuantity = (id) => {
+    return cart.find((item) => item.id === id)?.quantity || 1;
+  };
+
+  const increaseCartQuantity = (id, price) => {
     setCart((currentItems) => {
-      if (currentItems.find((item) => item.id === id) == null) {
-        return [...currentItems, { id, quantity: 1 }];
+      const itemIndex = currentItems.findIndex((item) => item.id === id);
+      if (itemIndex === -1) {
+        // If the item doesn't exist in the cart, add it with a quantity of 1 and total price equal to the item price
+        return [...currentItems, { id, quantity: 1, totalPrice: price }];
       } else {
-        return currentItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
+        // If the item already exists in the cart, update its quantity and total price
+        const updatedItems = currentItems.map((item, index) => {
+          if (index === itemIndex) {
+            const updatedQuantity = item.quantity + 1;
+            const updatedTotalPrice = updatedQuantity * price;
+            console.log(item);
+            return {
+              ...item,
+              quantity: updatedQuantity,
+              totalPrice: updatedTotalPrice,
+            };
           } else {
             return item;
           }
         });
+        return updatedItems;
       }
     });
   };
 
-  const decreaseCartQuantity = (id) => {
+  const decreaseCartQuantity = (id, price) => {
     setCart((currentItems) => {
-      if (currentItems.find((item) => item.id === id)?.quantity === 1) {
-        return currentItems.filter((item) => item.id !== id);
+      const itemIndex = currentItems.findIndex((item) => item.id === id);
+      if (itemIndex === -1) {
+        return currentItems;
       } else {
-        return currentItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
+        const item = currentItems[itemIndex];
+        const updatedQuantity = item.quantity - 1;
+        if (updatedQuantity === 0) {
+          return currentItems.filter((item, index) => index !== itemIndex);
+        } else {
+          const updatedTotalPrice = updatedQuantity * price;
+          const updatedItem = {
+            ...item,
+            quantity: updatedQuantity,
+            totalPrice: updatedTotalPrice,
+          };
+          const updatedItems = [...currentItems];
+          updatedItems[itemIndex] = updatedItem;
+          return updatedItems;
+        }
       }
     });
   };
+
+  // const removeFromCart = (id, price, quantity) => {
+  //   setCart((currentItems) => {
+  //     const itemIndex = currentItems.find((item) => item.id === id);
+  //     console.log(itemIndex);
+  //     if (itemIndex === -1) {
+  //       return currentItems;
+  //     } else {
+  //       const updatedItems = currentItems.filter((item) => item.id !== id);
+  //       console.log(updatedItems);
+  //       const updatedTotalPrice = totalPrice - price * quantity;
+  //       setTotalPrice(updatedTotalPrice);
+  //       return updatedItems;
+  //     }
+  //   });
+  // };
 
   const removeFromCart = (id) => {
     setCart((currentItems) => {
-      return currentItems.filter((item) => item.id !== id);
+      const updatedItems = currentItems.filter((item) => item.id !== id);
+      setProducts((prevState) => {
+        const index = prevState.findIndex((i) => i.id === id);
+        if (index === -1) {
+          return prevState; // item not found, return previous state
+        } else {
+          const updatedProducts = [...prevState];
+          updatedProducts[index] = { ...prevState[index], inStock: true };
+          console.log(updatedProducts);
+          return updatedProducts;
+        }
+      });
+      console.log(products);
+      return updatedItems;
     });
   };
+
+  const registerUser = async (userData) => {
+    setIsLoading(true);
+
+    setResend(true);
+    try {
+      const resp = await axios.post("/users/register", {
+        user: userData,
+      });
+
+      //please dont do the below. only for testing purpose
+      if (resp.status === 201) {
+        setResend(false);
+        toast.success("Please Check Your Email For Token");
+        setTimeout(() => {
+          navigate("/verify");
+        }, 1500);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const value = {
     products,
     addToCart,
-    itemInCart,
     cart,
     getSingleProduct,
     singleProduct,
     cartQuantity,
+    removeFromCart,
     increaseCartQuantity,
     decreaseCartQuantity,
   };

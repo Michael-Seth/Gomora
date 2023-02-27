@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../GlobalContext/Provider";
 
 function ProductItems({ products }) {
-  const { addToCart } = useContext(GlobalContext);
+  const { addToCart, removeFromCart } = useContext(GlobalContext);
 
+  useEffect(() => {}, [removeFromCart]);
   //console.log(products);
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto my-3">

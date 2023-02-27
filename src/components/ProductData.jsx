@@ -122,7 +122,7 @@ function ProductData() {
                     ? ""
                     : "bg-red-400 cursor-not-allowed focus:pointer-events-none "
                 }`}
-                onClick={addToCart}
+                onClick={() => addToCart(product)}
               >
                 {product.inStock ? "Add to cart" : "item in cart"}
               </button>

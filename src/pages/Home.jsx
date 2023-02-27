@@ -1,21 +1,20 @@
 import React from "react";
-import Banner from "../components/Banner";
-import CategoriesDisplay from "../components/CategoriesDisplay";
-import Features from "../components/Features";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Navbar from "../components/Navbar";
 import ProductsList from "../components/ProductsList";
+import Testimonial from "../components/Testimonial";
+import Modal from "../components/Modal";
+import Banner from "../components/Banner";
+import CTA from "../components/CTA";
+import Product from "../components/Product";
 
 function Home() {
   return (
     <div>
-      
       <Header />
-      <Banner />
-      <Features />
-      <CategoriesDisplay />
       <ProductsList />
+      <Testimonial />
+      <Modal />
+      <Banner />
     </div>
   );
 }

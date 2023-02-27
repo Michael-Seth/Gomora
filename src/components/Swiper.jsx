@@ -3,46 +3,89 @@ import React from "react";
 function Swiper() {
   return (
     <div>
-      <div className="lg:flex mt-15">
-        <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-              Build Your New{" "}
-              <span className="text-blue-600 dark:text-blue-400">Idea</span>
-            </h2>
+      <div className="lg:bg-[linear-gradient(90deg,_white_70%,_pink_70%)]">
+        <div className="mx-auto mt-20 px-4 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
+          <div className="flex flex-col items-center justify-between lg:flex-row">
+            {/* <div className="lg:max-w-lg lg:pr-5">
+              <div className="max-w-xl">
+                <h2 className="mb-6 max-w-lg text-3xl leading-snug tracking-tight text-blue-600 sm:text-5xl sm:leading-snug">
+                  <span className="my-1 inline-block font-serif font-bold text-blue-600">
+                    Learning model
+                  </span>
+                  of the future
+                </h2>
+                <p className="text-base text-gray-700">
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque it.
+                </p>
+                <div className="mt-8 sm:flex space-y-3 sm:space-y-0 sm:space-x-3">
+                  <div className="relative overflow-hidden rounded-xl border-4 border-blue-600 bg-white shadow">
+                    <div className="py-10 px-6">
+                      <div className="flex items-center">
+                        <h3 className="relative ml-2 inline-block text-4xl font-bold leading-none">
+                          328
+                        </h3>
+                        <span className="ml-3 text-base font-medium capitalize">
+                          Great Achievements
+                        </span>
+                      </div>
+                    </div>
+                  </div>
 
-            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Blanditiis commodi cum cupiditate ducimus, fugit harum id
-              necessitatibus odio quam quasi, quibusdam rem tempora voluptates.
-            </p>
-
-            <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-              <a
-                href="#"
-                className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-700"
-              >
-                Get Started
-              </a>
-              <a
-                href="#"
-                className="block px-5 py-2 text-sm font-medium tracking-wider text-center text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md lg:mx-4 hover:bg-gray-300"
-              >
-                Learn More
-              </a>
+                  <div className="relative overflow-hidden rounded-xl border-4 border-blue-600 bg-white shadow">
+                    <div className="py-10 px-6">
+                      <div className="flex items-center">
+                        <h3 className="relative ml-2 inline-block text-4xl font-bold leading-none">
+                          16
+                        </h3>
+                        <span className="ml-3 text-base font-medium capitalize">
+                          Graduations sponsored
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            <div className="">
+              <div className="lg:max-w-xl lg:pr-5">
+                <h2 className="mb-6 max-w-lg text-5xl font-light leading-snug tracking-tight text-blue-600 sm:text-8xl">
+                  Shop now, <br />
+                  <span className="my-1 inline-block border-b-8 border-blue-600 font-bold text-blue-600">
+                    {" "}
+                    smile later!{" "}
+                  </span>
+                </h2>
+                <p className="text-base text-gray-700">
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque it.
+                </p>
+              </div>
+              <div className="mt-10 flex flex-col items-center md:flex-row">
+                <a
+                  href="/"
+                  className="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-blue-700 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-blue-800"
+                >
+                  Stream Now{" "}
+                </a>
+                <a
+                  href="/"
+                  aria-label=""
+                  className="underline-offset-2 inline-flex items-center font-semibold text-blue-600 underline transition-colors duration-200 hover:underline"
+                >
+                  Watch how it works
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="w-full h-64 lg:w-1/2 lg:h-auto">
-          <div
-            className="w-full h-full bg-cover"
-            style={{
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80)",
-            }}
-          >
-            <div className="w-full h-full bg-black opacity-25"></div>
+            <div className="relative text-blue-600 lg:ml-32 lg:w-1/2 hidden lg:block">
+              <div className="border-b-8 border-b-blue-600 max-w-lg mx-auto mb-10">
+                <img
+                  className="w-full h-full object-contain"
+                  src="https://componentland.com/images/sisa0dVB-OE35qZ9CRvF2.png"
+                  alt="hero-bg"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

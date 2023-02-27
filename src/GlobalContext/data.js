@@ -179,3 +179,22 @@ const StoreData = [
 ];
 
 export default StoreData;
+
+// import { Configuration, OpenAIApi } from "openai";
+
+// const configuration = new Configuration({
+//   apiKey: process.env.SECRET_KEY,
+// });
+// // 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
+// const openai = new OpenAIApi(configuration);
+
+// openai
+//   .createImage({
+//     prompt: "A blue Lion",
+//     n: 1,
+//     size: "1024X1024",
+//   })
+//   .then((response) => {
+//     let image_url = response.data.data[0].url;
+//     console.log(image_url);
+//   });
