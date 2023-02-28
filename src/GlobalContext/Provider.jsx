@@ -14,7 +14,7 @@ export default function GlobalProvider({ children }) {
 
   const [cart, setCart, clearCart] = useLocalStorage("cart", []);
   const [singleProduct, setSingleProduct] = useState({});
-  const [cartTotal, setCartTotal] = useState(0);
+  const [cartTotal, setCartTotal] = useLocalStorage("subTotal", 0);
 
   const addToCart = (item) => {
     manageCart(item);
@@ -64,6 +64,17 @@ export default function GlobalProvider({ children }) {
 
   const cartQuantity = (id) => {
     return cart.find((item) => item.id === id)?.quantity || 1;
+  };
+
+  const submitCart = () => {
+    let sum = 0;
+    cart.forEach((cartPrice) => {
+      sum += cartPrice.totalPrice;
+      Math.ceil(sum);
+      setCartTotal(sum);
+      //console.log(cartPrice.price);
+    });
+    //handleCart();
   };
 
   const increaseCartQuantity = (id, price) => {
@@ -182,6 +193,8 @@ export default function GlobalProvider({ children }) {
     cart,
     getSingleProduct,
     singleProduct,
+    submitCart,
+    cartTotal,
     cartQuantity,
     removeFromCart,
     increaseCartQuantity,

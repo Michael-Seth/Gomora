@@ -7,28 +7,19 @@ import CartItem from "./CartItem";
 function Cart({ handleCart }) {
   const {
     cart,
+    cartTotal,
+    submitCart,
     increaseCartQuantity,
     cartQuantity,
     removeFromCart,
     decreaseCartQuantity,
   } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const [cartTotal, setCartTotal] = useLocalStorage("subTotal", 0);
   //const [itemQuantity, setItemQuantity] = useLocalStorage("itemQuantity", 1);
   // console.log(cartTotal);
 
   // const quantityRef = useRef(1);
   useEffect(() => {
-    const submitCart = () => {
-      let sum = 0;
-      cart.forEach((cartPrice) => {
-        sum += cartPrice.totalPrice;
-        Math.ceil(sum);
-        setCartTotal(sum);
-        //console.log(cartPrice.price);
-      });
-      //handleCart();
-    };
     submitCart();
     cartQuantity();
     //increaseCartQuantity();
@@ -94,6 +85,10 @@ function Cart({ handleCart }) {
                       type="button"
                       //onClick={submitCart}
                       className="group inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+                      onClick={() => {
+                        handleCart();
+                        navigate("/checkout");
+                      }}
                     >
                       Checkout
                       <svg

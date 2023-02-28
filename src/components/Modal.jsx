@@ -42,7 +42,7 @@ function Modal() {
             <div>
               <img
                 className="object-cover w-full h-48 rounded-md"
-                src="https://images.unsplash.com/photo-1579226905180-636b76d96082?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                src="https://cdn.pixabay.com/photo/2019/05/29/00/25/online-shopping-4236450__340.jpg"
                 alt=""
               />
 
@@ -51,24 +51,16 @@ function Modal() {
                   className="font-medium leading-6 text-gray-800 capitalize dark:text-white"
                   id="modal-title"
                 >
-                  Welcome to your dashboard
+                  Become a Member
                 </h3>
 
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Aspernatur dolorum aliquam ea, ratione deleniti porro officia?
-                  Explicabo maiores suscipit.
+                <p className="mt-2 text-[.8rem] text-gray-700 dark:text-gray-400">
+                  Join our community and never miss out on exciting updates!
+                  Sign up now and be a part of our growing community of
+                  like-minded individuals.
                 </p>
               </div>
             </div>
-
-            <div className="flex items-center justify-center mt-4">
-              <button className="w-2 h-2 focus:outline-none mx-1.5 bg-blue-500 rounded-full "></button>
-              <button className="w-2 h-2 focus:outline-none mx-1.5 bg-blue-100 dark:bg-gray-700 rounded-full "></button>
-              <button className="w-2 h-2 focus:outline-none mx-1.5 bg-blue-100 dark:bg-gray-700 rounded-full "></button>
-              <button class="w-2 h-2 focus:outline-none mx-1.5 bg-blue-100 dark:bg-gray-700 rounded-full "></button>
-            </div>
-
             <div className="mt-5 sm:flex sm:items-center sm:-mx-2">
               <button
                 className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"

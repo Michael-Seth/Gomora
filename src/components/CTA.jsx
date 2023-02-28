@@ -2,36 +2,34 @@ import React from "react";
 
 function CTA() {
   return (
-    <div className="my-10 mx-auto flex max-w-xl flex-col rounded-xl border bg-gray-700 py-10 px-4 text-center sm:px-10 lg:max-w-screen-lg lg:flex-row lg:text-left">
-      <div className="mx-auto w-[15rem] max-w-full lg:mx-0 lg:w-[40rem]">
-        <img
-          className="h-full w-full object-contain"
-          src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/4fa0e724015357.5632ca672052c.png"
-          alt=""
-        />
-      </div>
-      <div className="lg:pl-10">
-        <h1 className="mt-8 text-4xl font-bold text-white md:text-5xl md:leading-snug">
-          Startup Branding <br className="hidden sm:block" />
-          In a Nutshell
-        </h1>
-        <p className="mt-4 text-xl text-white">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-          numquam qui ratione. Ullam excepturi repellendus obcaecati recusandae
-          laudantium!
-        </p>
-        <div className="mt-8 flex flex-col rounded-md border bg-white sm:flex-row">
-          <input
-            className="m-2 h-12 rounded-md px-4 text-gray-500 focus:outline-none focus:ring focus:ring-red-400 sm:w-full"
-            placeholder="Enter your email"
-            type="email"
-            name="email"
-          />
-          <button className="m-2 shrink-0 rounded-md bg-red-600 px-8 py-3 font-medium text-white hover:bg-red-700 focus:bg-red-700 focus:outline-none">
-            Get Now
-          </button>
+    <div className="dark">
+      <section className="bg-white my-12 dark:bg-gray-900">
+        <div className="container px-4 py-16 mx-auto lg:flex lg:items-center lg:justify-between">
+          <h2 className="text-2xl font-semibold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
+            Join us and get updates on our latest collections
+          </h2>
+
+          <div className="mt-8 lg:mt-0">
+            <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:-mx-2">
+              <input
+                id="email"
+                type="text"
+                className="px-4 py-2 text-gray-700 bg-white border border-gray-200 rounded-lg sm:mx-2 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                placeholder="Email Address"
+              />
+
+              <button className="px-6 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg focus:ring focus:ring-blue-300 focus:ring-opacity-80 fo sm:mx-2 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                Subscribe
+              </button>
+            </div>
+
+            <p className="mt-3 text-sm text-gray-500 dark:text-gray-300">
+              Attention! Offer expires in 30 days. <br /> Make sure not to miss
+              this opportunity
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

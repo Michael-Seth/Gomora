@@ -49,16 +49,16 @@ function Swiper() {
             </div> */}
             <div className="">
               <div className="lg:max-w-xl lg:pr-5">
-                <h2 className="mb-6 max-w-lg text-5xl font-light leading-snug tracking-tight text-blue-600 sm:text-8xl">
-                  Shop now, <br />
+                <h2 className="mb-6 max-w-lg text-[4rem] font-light leading-snug tracking-tight text-blue-600 sm:text-8xl">
+                  Shop Now <br />
                   <span className="my-1 inline-block border-b-8 border-blue-600 font-bold text-blue-600">
                     {" "}
-                    smile later!{" "}
+                    Smile Later!{" "}
                   </span>
                 </h2>
-                <p className="text-base text-gray-700">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque it.
+                <p className="text-[1.2rem] text-gray-700">
+                  Shop smarter, not harder - with our top quality store items
+                  and our unbeatable prices.
                 </p>
               </div>
               <div className="mt-10 flex flex-col items-center md:flex-row">
@@ -66,7 +66,7 @@ function Swiper() {
                   href="/"
                   className="mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-blue-700 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-blue-800"
                 >
-                  Stream Now{" "}
+                  Get Started
                 </a>
                 <a
                   href="/"

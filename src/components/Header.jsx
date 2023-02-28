@@ -7,7 +7,6 @@ function Header() {
   return (
     <>
       <Swiper />
-      <h2>Carousel</h2>
     </>
   );
 }
