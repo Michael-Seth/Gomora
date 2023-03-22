@@ -1,4 +1,5 @@
 import React from "react";
+import Hero from "../assets/images/gomora-image.png";
 
 function Swiper() {
   return (
@@ -81,7 +82,7 @@ function Swiper() {
               <div className="border-b-8 border-b-blue-600 max-w-lg mx-auto mb-10">
                 <img
                   className="w-full h-full object-contain"
-                  src="https://componentland.com/images/sisa0dVB-OE35qZ9CRvF2.png"
+                  src={Hero}
                   alt="hero-bg"
                 />
               </div>

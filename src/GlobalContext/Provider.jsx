@@ -39,7 +39,7 @@ export default function GlobalProvider({ children }) {
   const manageCart = (item) => {
     if (item.inStock) {
       item.inStock = false;
-      const newItem = { ...item, quantity: 1, totalPrice: item.price };
+        const newItem = { ...item, quantity: 1, totalPrice: item.price };
       setCart([newItem, ...cart]);
       setProducts((prevState) => {
         const index = prevState.findIndex((i) => i.id === item.id);
